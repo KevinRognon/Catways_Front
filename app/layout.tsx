@@ -1,4 +1,5 @@
 import Link from "next/link";
+import './global.css';
 
 export default function RootLayout({
                                        children,
@@ -8,13 +9,13 @@ export default function RootLayout({
     return (
         <html lang="fr">
         <body>
-            <header>
-                <nav>
-                    <h1>
+            <header className="bg-lime-500 text-lime-700 h-20 flex items-center justify-center">
+                <nav className="flex items-center justify-center gap-2">
+                    <h1 className="underline p-3 hover:bg-lime-200 rounded-full">
                         <Link href="/">Russell</Link>
                     </h1>
                     <ul>
-                        <li>
+                        <li className="underline p-3 hover:bg-lime-200 rounded-full">
                             <Link href="/dashboard">Dashboard</Link>
                         </li>
                     </ul>

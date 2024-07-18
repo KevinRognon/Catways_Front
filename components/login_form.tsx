@@ -25,7 +25,6 @@ export default function LoginForm() {
 
             if(response.status === 200) {
                 const token = response.data.token;
-                console.log(token);
                 Cookies.set('token', token, {
                     expires: 0.5
                 })

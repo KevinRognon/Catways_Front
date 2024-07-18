@@ -1,12 +1,13 @@
-import withAuth from "../components/withAuth";
+// pages/dashboard/index.tsx
+import withAuth from '../../components/withAuth';
 
-
-const Dashboard = (props) => {
+const Dashboard = () => {
     return (
-        <>
+        <div>
             <h1>Dashboard</h1>
-        </>
-    )
-}
+            {/* Votre contenu de dashboard */}
+        </div>
+    );
+};
 
-export default withAuth(Dashboard);
+export default Dashboard;

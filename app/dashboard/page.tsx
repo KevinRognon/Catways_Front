@@ -1,4 +1,5 @@
-// pages/dashboard/index.tsx
+"use client";
+
 import withAuth from '../../components/withAuth';
 
 const Dashboard = () => {
@@ -10,4 +11,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default withAuth(Dashboard);

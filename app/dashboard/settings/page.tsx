@@ -1,5 +1,9 @@
+"use client";
 
+import withAuth from "../../../components/withAuth";
 
-export default function Page() {
+function Settings() {
     return <h1>Settings</h1>
 }
+
+export default withAuth(Settings);

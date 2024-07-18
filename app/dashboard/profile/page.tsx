@@ -1,6 +1,10 @@
+"use client";
 
+import withAuth from "../../../components/withAuth";
 
-export default function Page() {
+const Profile = () => {
 
     return <h1>Profile</h1>
 }
+
+export default withAuth(Profile);

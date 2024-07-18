@@ -1,6 +1,6 @@
 import LoginForm from "./components/login_form";
 
-export default function Page() {
+export default function Login() {
     return (
         <>
             <div className="flex flex-col items-center justify-center w-full">

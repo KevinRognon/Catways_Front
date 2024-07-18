@@ -1,9 +1,12 @@
+import withAuth from "../components/withAuth";
 
 
-export default function Page() {
+const Dashboard = (props) => {
     return (
         <>
             <h1>Dashboard</h1>
         </>
     )
 }
+
+export default withAuth(Dashboard);

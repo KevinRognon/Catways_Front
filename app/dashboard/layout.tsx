@@ -24,12 +24,16 @@ export default function Layout({
         <>
             <nav className="flex items-center justify-between gap-2 bg-lime-200 text-lime-700 h-12 pl-5 pr-5">
                 {
-                    user
-                    &&
-                    <div>
-                        <p>{user.name}</p>
-                        <p>{user.email}</p>
-                    </div>
+                    user ? <div>
+                            <p>{user.name}</p>
+                            <p>{user.email}</p>
+                        </div>
+                        :
+                        <div>
+                            <p>Loading</p>
+                            <p>Loading</p>
+                        </div>
+
                 }
                 <div>
                     <Link className="p-4 " href="/dashboard/profile">Profile</Link>

@@ -4,6 +4,7 @@ import withAuth from "../../../components/withAuth";
 import {useEffect, useState} from "react";
 import {useRouter} from 'next/navigation';
 import axios from "axios";
+import Link from "next/link";
 
 function Users() {
     const router = useRouter();
@@ -29,18 +30,24 @@ function Users() {
 
     return (
         <>
-            <article className="flex justify-center mt-5 gap-3">
-                {
-                    users.map(user => {
-                       return <User
-                            onClick={() => {handleClick(user._id)}}
-                            name={user.name}
-                            email={user.email}
-                        />
+            <section className="flex flex-col items-center">
+                <Link className="underline" href="/dashboard/users/create">
+                    Create
+                </Link>
+                <article className="flex justify-center mt-5 gap-3 flex-wrap">
+                    {
+                        users.map(user => {
+                           return <User
+                                key={user._id}
+                                onClick={() => {handleClick(user._id)}}
+                                name={user.name}
+                                email={user.email}
+                            />
 
-                    })
-                }
-            </article>
+                        })
+                    }
+                </article>
+            </section>
         </>
     )
 }

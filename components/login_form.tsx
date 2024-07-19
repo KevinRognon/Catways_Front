@@ -4,6 +4,7 @@ import {useState} from "react";
 import axios from "axios";
 import {useRouter} from "next/navigation";
 import Cookies from 'js-cookie';
+import {useUser} from "../context/userContext";
 
 
 export default function LoginForm() {
@@ -11,6 +12,8 @@ export default function LoginForm() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const { user, setUser } = useUser()
 
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -27,9 +30,17 @@ export default function LoginForm() {
 
             if(response.status === 200) {
                 const token = response.data.token;
+                const user = response.data.user;
+                setUser(user);
+
+                console.log(user);
                 Cookies.set('token', token, {
                     expires: 0.5
-                })
+                });
+                Cookies.set('user', JSON.stringify(user), {
+                    expires: 0.5
+                });
+
                 router.push('/dashboard');
             }
         } catch (e) {

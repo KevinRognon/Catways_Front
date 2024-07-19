@@ -8,7 +8,7 @@ import axios from "axios";
 
 const Detail_User = () => {
 
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
     const router = useRouter();
     const {id} = useParams();
 
@@ -21,6 +21,8 @@ const Detail_User = () => {
     useEffect(() => {
         fetchdata();
     }, [id]);
+
+    if(!user) return <p className="text-orange-300" >Loading..</p>
 
     return (
         <>

@@ -1,5 +1,5 @@
-import Link from "next/link";
 import '../public/global.css';
+import { UserProvider } from '../context/userContext';
 
 export default function RootLayout({
                                        children,
@@ -10,7 +10,9 @@ export default function RootLayout({
         <html lang="fr">
             <body>
                 <main>
-                    {children}
+                    <UserProvider>
+                        {children}
+                    </UserProvider>
                 </main>
             </body>
         </html>

@@ -33,7 +33,6 @@ export default function LoginForm() {
                 const user = response.data.user;
                 setUser(user);
 
-                console.log(user);
                 Cookies.set('token', token, {
                     expires: 0.5
                 });

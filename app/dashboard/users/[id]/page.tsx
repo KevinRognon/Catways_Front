@@ -13,7 +13,7 @@ const Detail_User = () => {
     const {id} = useParams();
 
     const fetchdata = async () => {
-        const response = await axios.get(`http://localhost:8000/users/${id}`);
+        const response = await axios.get(`https://catways-api.onrender.com/users/${id}`);
         const data = await response.data;
         setUser(data);
     }
@@ -29,12 +29,20 @@ const Detail_User = () => {
             <User
                 name={user.name}
                 email={user.email}
+                id={id}
             />
         </>
     )
 }
 
 function User(props) {
+
+    const router = useRouter();
+    async function handleDelete() {
+        await axios.delete(`https://catways-api.onrender.com/users/${props.id}`);
+        router.replace(`/dashboard/users`);
+    }
+
     return (
         <>
             <article>
@@ -44,6 +52,7 @@ function User(props) {
                 <p>
                     <strong>Email: </strong> {props.email}
                 </p>
+                <button onClick={handleDelete}>Supprimer</button>
             </article>
         </>
     )

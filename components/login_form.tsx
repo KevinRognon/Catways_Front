@@ -21,7 +21,7 @@ export default function LoginForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/users/authenticate', {
+            const response = await axios.post('https://catways-api.onrender.com/users/authenticate', {
                 name,
                 email,
                 password

@@ -13,7 +13,7 @@ function Users() {
     const [users, setUsers] = useState([]);
 
     const fetchdata = async () => {
-        const response = await axios.get('http://localhost:8000/users/findall');
+        const response = await axios.get('https://catways-api.onrender.com/users/findall');
         const data = await response.data;
         setUsers(data);
     }

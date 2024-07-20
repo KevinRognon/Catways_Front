@@ -25,6 +25,12 @@ function CreateForm () {
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
 
+    function setFieldsToDefault() {
+        setName('');
+        setEmail('');
+        setPassword('');
+    }
+
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -35,6 +41,8 @@ function CreateForm () {
                 password: password,
             })
             setSuccessMessage('Utilisateur enregistré.');
+            setFieldsToDefault();
+
         } catch (e) {
             setErrorMessage(`Erreur lors de l'enregistrement: ${e}`);
         }
@@ -47,9 +55,9 @@ function CreateForm () {
                 successMessage && <p className="text-green-500">{successMessage}</p>
             }
             <form onSubmit={handleSubmit} className="flex flex-col justify-center gap-2 ">
-                <input className="border-lime-300 border-2 p-2 outline-lime-800" type="text" name="name" id="name" placeholder="Name" onChange={(e) => {setName(e.target.value)}} />
-                <input className="border-lime-300 border-2 p-2 outline-lime-800" type="text" name="email" id="email" placeholder="Email" onChange={(e) => {setEmail(e.target.value)}} />
-                <input className="border-lime-300 border-2 p-2 outline-lime-800" type="password" name="password" id="password" placeholder="Password" onChange={(e) => {setPassword(e.target.value)}} />
+                <input value={name} className="border-lime-300 border-2 p-2 outline-lime-800" type="text" name="name" id="name" placeholder="Name" onChange={(e) => {setName(e.target.value)}} />
+                <input value={email} className="border-lime-300 border-2 p-2 outline-lime-800" type="text" name="email" id="email" placeholder="Email" onChange={(e) => {setEmail(e.target.value)}} />
+                <input value={password} className="border-lime-300 border-2 p-2 outline-lime-800" type="password" name="password" id="password" placeholder="Password" onChange={(e) => {setPassword(e.target.value)}} />
                 <input className="p-2 border-2 border-lime-300 bg-lime-300 text-lime-500 hover:cursor-pointer hover:text-lime-50" type="submit" value="Créer"/>
             </form>
         </>

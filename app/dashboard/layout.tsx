@@ -38,7 +38,7 @@ export default function Layout({
                         </div>
 
                 }
-                <p className="hover:cursor-pointer" onClick={handleLogout}>Logout</p>
+                <p className="hover:cursor-pointer" onClick={handleLogout}>Déconnexion</p>
             </nav>
             {children}
         </>

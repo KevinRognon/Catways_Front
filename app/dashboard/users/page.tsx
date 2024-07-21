@@ -11,11 +11,14 @@ function Users() {
 
 
     const [users, setUsers] = useState([]);
+    const [searchText, setSearchText] = useState('');
+    const [filteredUsers, setFilteredUsers] = useState([]);
 
     const fetchdata = async () => {
         const response = await axios.get('https://catways-api.onrender.com/users/findall');
         const data = await response.data;
         setUsers(data);
+        setFilteredUsers(data);
     }
 
     const handleClick = (id) => {
@@ -28,15 +31,31 @@ function Users() {
 
     }, []);
 
+    const handleChange = (e) => {
+        const recherche = e.target.value;
+        setSearchText(prev => recherche);
+        if(recherche.length > 1){
+            const filtered = users.filter(user => user.name.toLowerCase().includes(searchText.toLowerCase()));
+            setFilteredUsers(filtered);
+        }
+
+        if(recherche === "") {
+            setFilteredUsers(users);
+        }
+    }
+
     return (
         <>
             <article className="flex flex-col p-8 h-96">
                 <Link className="underline mb-5" href="/dashboard/users/create">
                     Create
                 </Link>
-                <div className="grid grid-cols-1 gap-1">
+
+                <input className="w-1/3 p-2 text-black mb-2" type="text" value={searchText} name="search" placeholder="Saisissez un utilisateur" onChange={(e) => handleChange(e)} />
+
+                <ul className="grid grid-cols-1 gap-1">
                     {
-                        users.map(user => {
+                        filteredUsers.map(user => {
                            return <User
                                 key={user._id}
                                 onClick={() => {handleClick(user._id)}}
@@ -46,7 +65,7 @@ function Users() {
 
                         })
                     }
-                </div>
+                </ul>
             </article>
         </>
     )

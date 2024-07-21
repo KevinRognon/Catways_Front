@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.article_dashboard {
+    --tw-border-opacity: 1;
+    border-color: rgb(14 116 144 / var(--tw-border-opacity));
+    border-width: 2px;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 24rem;
+    transition: .2s;
+
+}
+
+.article_dashboard:hover {
+    background-color: #0e7490;
+}

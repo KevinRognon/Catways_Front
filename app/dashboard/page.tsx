@@ -1,8 +1,7 @@
 "use client";
 
-import withAuth from '../../components/withAuth';
-import Users from "./users/page";
 import Link from "next/link";
+import withAuth from "../../components/withAuth";
 
 const Dashboard = () => {
     return (

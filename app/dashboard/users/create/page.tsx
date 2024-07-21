@@ -35,7 +35,7 @@ function CreateForm () {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            const response = await axios.post('https://catways-api.onrender.com/users/add', {
+            const response = await axios.post(`${process.env.URL}/users/add`, {
                 name: name,
                 email: email,
                 password: password,

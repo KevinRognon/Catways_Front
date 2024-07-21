@@ -21,21 +21,20 @@ export default function LoginForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://catways-api.onrender.com/users/authenticate', {
+            const response = await axios.post(`${process.env.URL}/users/authenticate`, {
                 name,
                 email,
                 password
             })
 
             if(response.status === 200) {
-                const token = response.data.token;
                 const user = response.data.user;
+                let token = response.headers['authorization'];
                 setUser(user);
-
-                Cookies.set('token', token, {
+                Cookies.set('user', JSON.stringify(user), {
                     expires: 0.5
                 });
-                Cookies.set('user', JSON.stringify(user), {
+                Cookies.set('token', token, {
                     expires: 0.5
                 });
 
@@ -49,7 +48,7 @@ export default function LoginForm() {
             } else if (e.response && e.response.status === 501) {
                 setErrorMessage('Erreur du serveur. Veuillez réessayer.');
             } else {
-                setErrorMessage('Erreur inconnue.');
+                setErrorMessage('Erreur inconnue: ' + e);
             }
         }
     }

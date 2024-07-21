@@ -21,14 +21,15 @@
       "static/chunks/23-b66b23417ecc1a7d.js",
       "static/chunks/main-app-57a639426638d473.js",
       "static/chunks/472-9ca1400a7de9f70a.js",
-      "static/chunks/app/page-6e616fafbf2dfae6.js"
+      "static/chunks/app/page-a21d3b1549d04ab1.js"
     ],
-    "/dashboard/profile/page": [
+    "/dashboard/settings/page": [
       "static/chunks/webpack-5f557bace25abdfc.js",
       "static/chunks/fd9d1056-e3489de6ce1f07f6.js",
       "static/chunks/23-b66b23417ecc1a7d.js",
       "static/chunks/main-app-57a639426638d473.js",
-      "static/chunks/app/dashboard/profile/page-baf415b65b085646.js"
+      "static/chunks/472-9ca1400a7de9f70a.js",
+      "static/chunks/app/dashboard/settings/page-4089f91d8c4afa78.js"
     ],
     "/dashboard/layout": [
       "static/chunks/webpack-5f557bace25abdfc.js",
@@ -38,20 +39,29 @@
       "static/chunks/291-587fda49e03aa4c1.js",
       "static/chunks/app/dashboard/layout-959c66d4d211c6f7.js"
     ],
-    "/dashboard/settings/page": [
+    "/dashboard/users/[id]/page": [
       "static/chunks/webpack-5f557bace25abdfc.js",
       "static/chunks/fd9d1056-e3489de6ce1f07f6.js",
       "static/chunks/23-b66b23417ecc1a7d.js",
       "static/chunks/main-app-57a639426638d473.js",
-      "static/chunks/app/dashboard/settings/page-f28e1bdf49920f07.js"
+      "static/chunks/472-9ca1400a7de9f70a.js",
+      "static/chunks/app/dashboard/users/[id]/page-e92d1990ae7b943c.js"
     ],
-    "/dashboard/page": [
+    "/dashboard/profile/page": [
       "static/chunks/webpack-5f557bace25abdfc.js",
       "static/chunks/fd9d1056-e3489de6ce1f07f6.js",
       "static/chunks/23-b66b23417ecc1a7d.js",
       "static/chunks/main-app-57a639426638d473.js",
-      "static/chunks/291-587fda49e03aa4c1.js",
-      "static/chunks/app/dashboard/page-e13335944f139e61.js"
+      "static/chunks/472-9ca1400a7de9f70a.js",
+      "static/chunks/app/dashboard/profile/page-515f8801002969f2.js"
+    ],
+    "/dashboard/users/create/page": [
+      "static/chunks/webpack-5f557bace25abdfc.js",
+      "static/chunks/fd9d1056-e3489de6ce1f07f6.js",
+      "static/chunks/23-b66b23417ecc1a7d.js",
+      "static/chunks/main-app-57a639426638d473.js",
+      "static/chunks/472-9ca1400a7de9f70a.js",
+      "static/chunks/app/dashboard/users/create/page-0bca4644ef906175.js"
     ],
     "/dashboard/users/page": [
       "static/chunks/webpack-5f557bace25abdfc.js",
@@ -60,23 +70,16 @@
       "static/chunks/main-app-57a639426638d473.js",
       "static/chunks/472-9ca1400a7de9f70a.js",
       "static/chunks/291-587fda49e03aa4c1.js",
-      "static/chunks/app/dashboard/users/page-96a66fe87c4485cb.js"
+      "static/chunks/app/dashboard/users/page-059930018660ae1b.js"
     ],
-    "/dashboard/users/[id]/page": [
+    "/dashboard/page": [
       "static/chunks/webpack-5f557bace25abdfc.js",
       "static/chunks/fd9d1056-e3489de6ce1f07f6.js",
       "static/chunks/23-b66b23417ecc1a7d.js",
       "static/chunks/main-app-57a639426638d473.js",
       "static/chunks/472-9ca1400a7de9f70a.js",
-      "static/chunks/app/dashboard/users/[id]/page-8d5628917cb7789c.js"
-    ],
-    "/dashboard/users/create/page": [
-      "static/chunks/webpack-5f557bace25abdfc.js",
-      "static/chunks/fd9d1056-e3489de6ce1f07f6.js",
-      "static/chunks/23-b66b23417ecc1a7d.js",
-      "static/chunks/main-app-57a639426638d473.js",
-      "static/chunks/472-9ca1400a7de9f70a.js",
-      "static/chunks/app/dashboard/users/create/page-289011e95628a6ac.js"
+      "static/chunks/291-587fda49e03aa4c1.js",
+      "static/chunks/app/dashboard/page-4c3612362edd54a1.js"
     ],
     "/dashboard/catways/page": [
       "static/chunks/webpack-5f557bace25abdfc.js",
@@ -85,7 +88,7 @@
       "static/chunks/main-app-57a639426638d473.js",
       "static/chunks/472-9ca1400a7de9f70a.js",
       "static/chunks/291-587fda49e03aa4c1.js",
-      "static/chunks/app/dashboard/catways/page-6702ead49adaac5d.js"
+      "static/chunks/app/dashboard/catways/page-089a980983f3aeba.js"
     ]
   }
 }

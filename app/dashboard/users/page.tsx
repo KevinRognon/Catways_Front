@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import {useRouter} from 'next/navigation';
 import axios from "axios";
 import Link from "next/link";
+import Cookies from "js-cookie";
 
 function Users() {
     const router = useRouter();
@@ -15,7 +16,7 @@ function Users() {
     const [filteredUsers, setFilteredUsers] = useState([]);
 
     const fetchdata = async () => {
-        const response = await axios.get('https://catways-api.onrender.com/users/findall');
+        const response = await axios.get(`${process.env.URL}/users/findall`);
         const data = await response.data;
         setUsers(data);
         setFilteredUsers(data);

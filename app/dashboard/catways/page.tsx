@@ -13,7 +13,7 @@ export default function Catways() {
     const router = useRouter();
 
     const fetchdata = async () => {
-        const response = await axios.get("https://catways-api.onrender.com/catways/");
+        const response = await axios.get(`${process.env.URL}/catways/`);
         const catways = await response.data.catways;
         setCatways(catways);
         setFilteredCatways(catways);

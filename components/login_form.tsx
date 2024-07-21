@@ -56,11 +56,11 @@ export default function LoginForm() {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="flex flex-col justify-center gap-2 ">
-                <input value={name} onChange={(e) => setName(e.target.value)} className="border-lime-300 border-2 p-2 outline-lime-800" type="text" name="name" id="name" required placeholder="Username"/>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} className="border-lime-300 border-2 p-2 outline-lime-800" type="email" name="email" id="email" required placeholder="Email"/>
-                <input value={password} onChange={(e) => setPassword(e.target.value)} className="border-lime-300 border-2 p-2 outline-lime-800" type="password" name="password" id="password" required placeholder="Password"/>
-                <button type="submit" className="p-2 border-2 border-lime-300 bg-lime-300 text-lime-500 hover:cursor-pointer hover:text-lime-50">Connexion</button>
+            <form onSubmit={handleSubmit} className="flex flex-col justify-center gap-2 text-black">
+                <input value={name} onChange={(e) => setName(e.target.value)} className="border-cyan-700 border-2 p-2 outline-lime-800" type="text" name="name" id="name" required placeholder="Username"/>
+                <input value={email} onChange={(e) => setEmail(e.target.value)} className="border-cyan-700 border-2 p-2 outline-lime-800" type="email" name="email" id="email" required placeholder="Email"/>
+                <input value={password} onChange={(e) => setPassword(e.target.value)} className="border-cyan-700 border-2 p-2 outline-lime-800" type="password" name="password" id="password" required placeholder="Password"/>
+                <button type="submit" className="p-2 border-2 border-cyan-700 bg-cyan-700 text-cyan-500 hover:cursor-pointer hover:text-lime-50">Connexion</button>
                 {
                     errorMessage && <p className="text-red-500 font-bold">{errorMessage}</p>
                 }

@@ -22,12 +22,15 @@ export default function Layout({
     };
     return (
         <>
-            <nav className="flex items-center justify-between gap-2 bg-lime-200 text-lime-700 h-12 pl-5 pr-5">
+            <nav className="flex items-center justify-between gap-2 bg-cyan-700 text-cyan-100 h-12 pl-5 pr-5">
                 {
-                    user ? <div>
-                            <p>{user.name}</p>
-                            <p>{user.email}</p>
-                        </div>
+                    user ?
+                        <Link href="/dashboard">
+                            <div>
+                                <p>{user.name}</p>
+                                <p>{user.email}</p>
+                            </div>
+                        </Link>
                         :
                         <div>
                             <p>Loading</p>
@@ -35,17 +38,9 @@ export default function Layout({
                         </div>
 
                 }
-                <div>
-                    <Link className="p-4 " href="/dashboard/profile">Profile</Link>
-                    <Link className="p-4 " href="/dashboard/users">Users</Link>
-                    <Link className="p-4 " href="/dashboard/settings">Settings</Link>
-                </div>
                 <p className="hover:cursor-pointer" onClick={handleLogout}>Logout</p>
             </nav>
-
-            <section>
-                {children}
-            </section>
+            {children}
         </>
     )
 }

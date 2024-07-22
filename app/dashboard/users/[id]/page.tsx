@@ -9,7 +9,6 @@ import axios from "axios";
 const Detail_User = () => {
 
     const [user, setUser] = useState(null);
-    const router = useRouter();
     const {id} = useParams();
 
     const fetchdata = async () => {

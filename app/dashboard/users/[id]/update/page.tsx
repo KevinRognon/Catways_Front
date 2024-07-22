@@ -1,7 +1,7 @@
 "use client";
 
 import withAuth from "../../../../../components/withAuth";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import axios from "axios";
 import {useParams} from "next/navigation";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
@@ -9,7 +9,6 @@ import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/post
 
 function UpdateUser () {
     const {id} = useParams();
-    const [user, setUser] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
 
@@ -18,14 +17,8 @@ function UpdateUser () {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    async function fetchdata() {
-        // @ts-ignore
-        const response = await axios.get(`${process.env.URL}/users/${id}`)
-        const data = await response.data;
-        setUser(data);
-    }
 
-    async function handleSubmit(e) {
+    async function handleSubmit(e: { preventDefault: () => void; }) {
         e.preventDefault();
         // @ts-ignore
         const response = await axios.patch(`${process.env.URL}/users/${id}/update`, {
@@ -35,9 +28,12 @@ function UpdateUser () {
         });
 
         const data = await response.data;
-        setSuccessMessage(data.message);
         if(response.status === 501) {
             setErrorMessage(data.message);
+            setFieldsToDefault();
+        } else {
+            setSuccessMessage(data.message);
+            setFieldsToDefault();
         }
     }
 
@@ -49,11 +45,6 @@ function UpdateUser () {
     }
 
 
-    useEffect(() => {
-
-        fetchdata();
-
-    }, []);
 
 
     return (

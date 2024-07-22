@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
 export default function withAuth(WrappedComponent) {
     const AuthenticatedComponent = (props) => {
         const router = useRouter();
+        const pathName = usePathname();
 
         useEffect(() => {
             const token = Cookies.get('token');
@@ -16,6 +17,9 @@ export default function withAuth(WrappedComponent) {
                 router.replace('/');
             } else {
                 axios.defaults.headers.common['Authorization'] = `${token}`;
+                if (pathName === "/") {
+                    router.replace('/dashboard');
+                }
             }
         }, [router]);
 

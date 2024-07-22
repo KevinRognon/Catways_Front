@@ -1,6 +1,9 @@
-import LoginForm from "../components/login_form";
+"use client";
 
-export default function Login() {
+import LoginForm from "../components/login_form";
+import withAuth from "../components/withAuth";
+
+function Login() {
     return (
         <>
             <div className="flex flex-col items-center justify-center w-full pt-20">
@@ -19,3 +22,5 @@ export default function Login() {
         </>
     )
 }
+
+export default withAuth(Login);

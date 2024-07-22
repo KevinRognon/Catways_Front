@@ -2,14 +2,16 @@
 
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {useParams} from "next/navigation";
+import {useParams, useRouter} from "next/navigation";
 import withAuth from "../../../../components/withAuth";
 
 
 function DetailCatway() {
 
     const [catway, setCatway] = useState([]);
+    const [errorMessage, setErrorMessage] = useState("");
     const {id} = useParams();
+    const router = useRouter();
 
     const fetchdata = async () => {
         const response = await axios.get(`${process.env.URL}/catways/${id}`)
@@ -20,8 +22,13 @@ function DetailCatway() {
         fetchdata();
     }, []);
 
-    function handleDelete() {
-
+    async function handleDelete() {
+        const response = await axios.delete(`${process.env.URL}/catways/${id}`);
+        if(response.status === 200) {
+            router.replace('/dashboard/catways')
+        } else if (response.status === 501) {
+            setErrorMessage("Une erreur est survenue.")
+        }
     }
 
     return (
@@ -37,12 +44,12 @@ function DetailCatway() {
                         {/* @ts-ignore */}
                         <strong>Etat catway: </strong> {catway.catwayState}
                     </p>
-                    <button
-                        onClick={handleDelete}
-                        className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
-                    >
+                    <button onClick={handleDelete} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">
                         Supprimer
                     </button>
+                    {
+                        errorMessage && <p className="text-red-600 text-2xl">{errorMessage}</p>
+                    }
                 </article>
             </div>
         </>

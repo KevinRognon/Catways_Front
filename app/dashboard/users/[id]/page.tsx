@@ -44,7 +44,7 @@ function User(props) {
     }
 
     return (
-        <article className="bg-cyan-50 p-6 rounded-lg shadow-md text-cyan-950">
+        <article className="w-2/5 bg-cyan-50 p-6 rounded-lg shadow-md text-cyan-950">
             <h2 className="text-2xl font-semibold text-cyan-700 mb-4">User Detail</h2>
             <p className="mb-2">
                 <strong>Name: </strong> {props.name}

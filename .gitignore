@@ -3,6 +3,4 @@
 /.idea
 /node_modules
 /.next
-/.next/.json
-/.next
-/.next/types/app/dashboard/users
+/.next/cache

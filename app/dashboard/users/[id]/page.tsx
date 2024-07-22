@@ -52,12 +52,10 @@ function User(props) {
             <p className="mb-4">
                 <strong>Email: </strong> {props.email}
             </p>
-            <button
-                onClick={handleDelete}
-                className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
-            >
-                Supprimer
-            </button>
+            <div className="flex items-center gap-2">
+                <button onClick={() => { router.replace(`/dashboard/users/${props.id}/update`) }} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Modifier</button>
+                <button onClick={handleDelete} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Supprimer</button>
+            </div>
         </article>
     )
 }

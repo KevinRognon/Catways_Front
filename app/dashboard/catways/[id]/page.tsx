@@ -49,7 +49,12 @@ function DetailCatway() {
                         <strong>Longueur du catway: </strong> {catway.catwayType}
                     </p>
                     <div className="flex items-center gap-2">
-                        <button onClick={() => { router.replace(`/dashboard/catways/${id}/update`) }} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Modifier
+                        <button
+                                className="bg-purple-800 text-white px-4 py-2 rounded hover:bg-purple-600">Réserver
+                        </button>
+                        <button onClick={() => {
+                            router.replace(`/dashboard/catways/${id}/update`)
+                        }} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Modifier
                         </button>
                         <button onClick={handleDelete}
                                 className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Supprimer

@@ -34,13 +34,11 @@ function UpdateCatway () {
         const response = await axios.patch(`${process.env.URL}/catways/${id}/update`, {
             catwayState: catwayState
         });
-
-        const data = await response.data;
         if(response.status === 501) {
-            setErrorMessage(data.message);
+            setErrorMessage(response.data.message);
             setFieldsToDefault();
         } else {
-            setSuccessMessage(data.message);
+            setSuccessMessage(response.data.message);
             setTimeout(() => {
                 router.replace(`/dashboard/catways/${id}`);
             }, 1000);
@@ -68,6 +66,10 @@ function UpdateCatway () {
                     {/* @ts-ignore */}
                     <input value={catwayState} className="border-cyan-700 border-2 p-2 outline-lime-800" type="text" name="name" id="name" placeholder={catway.catwayState} onChange={(e) => {setCatwayState(e.target.value)}} />
                     <input className="p-2 border-2 border-cyan-700 bg-cyan-700 text-cyan-100 hover:cursor-pointer hover:text-lime-50" type="submit" value="Modifier"/>
+                    <button onClick={() => {
+                        router.replace(`/dashboard/catways/${id}`);
+                    }} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Retour
+                    </button>
                 </form>
             </div>
         </>

@@ -40,13 +40,21 @@ function DetailCatway() {
                         {/* @ts-ignore */}
                         <strong>Numéro catway: </strong> {catway.catwayNumber}
                     </p>
-                    <p className="mb-4">
+                    <p className="mb-2">
                         {/* @ts-ignore */}
                         <strong>Etat catway: </strong> {catway.catwayState}
                     </p>
-                    <button onClick={handleDelete} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">
-                        Supprimer
-                    </button>
+                    <p className="mb-2">
+                        {/* @ts-ignore */}
+                        <strong>Longueur du catway: </strong> {catway.catwayType}
+                    </p>
+                    <div className="flex items-center gap-2">
+                        <button onClick={() => { router.replace(`/dashboard/catways/${id}/update`) }} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Modifier
+                        </button>
+                        <button onClick={handleDelete}
+                                className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Supprimer
+                        </button>
+                    </div>
                     {
                         errorMessage && <p className="text-red-600 text-2xl">{errorMessage}</p>
                     }

@@ -4,6 +4,7 @@ import withAuth from "../../../../components/withAuth";
 import {useEffect, useState} from "react";
 import {useRouter, useParams} from "next/navigation";
 import axios from "axios";
+import Loader from "../../../../components/Loader";
 
 
 const Detail_User = () => {
@@ -21,7 +22,7 @@ const Detail_User = () => {
         fetchdata();
     }, [id]);
 
-    if (!user) return <p className="text-orange-300 text-center mt-5">Loading...</p>;
+    if (!user) return <Loader/>;
 
     return (
         <div className="p-10">

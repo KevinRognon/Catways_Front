@@ -19,3 +19,16 @@
 .article_dashboard:hover {
     background-color: #0e7490;
 }
+
+/* OVERLAY LOADING */
+
+.overlay_loader {
+    background-color: #0e7490;
+    opacity: .5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100dvw !important;
+    height: 100dvh !important;
+}

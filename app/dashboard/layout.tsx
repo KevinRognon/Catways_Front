@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import Link from "next/link";
 import {useRouter} from "next/navigation";
 import {useUser} from "../../context/userContext";
+import {Suspense} from "react";
 
 export default function Layout({
                                        children,

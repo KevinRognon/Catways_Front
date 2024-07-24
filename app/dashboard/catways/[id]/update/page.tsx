@@ -15,6 +15,7 @@ function UpdateCatway () {
 
 
     const [catwayState, setCatwayState] = useState('');
+    const [catwayInitialState, setCatwayInitialState] = useState('');
     const [catway, setCatway] = useState([]);
 
     useEffect(() => {
@@ -24,12 +25,19 @@ function UpdateCatway () {
     async function getCatwayInfos() {
         // @ts-ignore
         const response = await axios.get(`${process.env.URL}/catways/${id}`);
-        setCatway(await response.data.catway);
+        const catway = await response.data.catway;
+        setCatway(catway);
+        setCatwayInitialState(catway.catwayState);
     }
 
 
     async function handleSubmit(e: { preventDefault: () => void; }) {
         e.preventDefault();
+
+        if (catwayState === catwayInitialState) {
+            setErrorMessage('Aucune modification détéctée');
+            return;
+        }
         // @ts-ignore
         const response = await axios.patch(`${process.env.URL}/catways/${id}/update`, {
             catwayState: catwayState

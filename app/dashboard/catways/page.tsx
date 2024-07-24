@@ -1,12 +1,43 @@
 "use client";
-import {useEffect, useState} from "react";
+import {Suspense, useEffect, useState} from "react";
 import axios from "axios";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
+import withAuth from "../../../components/withAuth";
+import Loader from "../../../components/Loader";
 
 
-export default function Catways() {
+function CatwaysPage() {
 
+    return (
+        <>
+            <article className="flex flex-col p-8 h-96">
+                <Link className="underline mb-5" href="/dashboard/catways/create">
+                    Create
+                </Link>
+                <Suspense fallback={<Loader />}>
+                    <CatwaysList/>
+                </Suspense>
+            </article>
+        </>
+    )
+
+}
+
+function Catway(props) {
+    return (
+        <>
+            <li onClick={props.onClick}
+                className="list-none bg-cyan-700 text-cyan-100 p-5 flex flex-col justify-center hover:cursor-pointer">
+                <p>
+                    <strong>Catway Number: </strong> {props.catwayNumber}
+                </p>
+            </li>
+        </>
+    )
+}
+
+function CatwaysList() {
     const [catways, setCatways] = useState([]);
     const [searchText, setSearchText] = useState('');
     const [filteredCatways, setFilteredCatways] = useState([]);
@@ -40,41 +71,24 @@ export default function Catways() {
 
     return (
         <>
-            <article className="flex flex-col p-8 h-96">
-                <Link className="underline mb-5" href="/dashboard/catways/create">
-                    Create
-                </Link>
+            <input className="w-1/3 p-2 text-black mb-2" type="text" value={searchText} name="search"
+                   placeholder="Saisissez un catway" onChange={(e) => handleChange(e)}/>
 
-                <input className="w-1/3 p-2 text-black mb-2" type="text" value={searchText} name="search"
-                       placeholder="Saisissez un catway" onChange={(e) => handleChange(e)}/>
-
-                <ul className="grid grid-cols-1 gap-1">
-                    {
-                        filteredCatways.map(item => {
-                            return <Catway
-                                key={item._id}
-                                catwayNumber={item.catwayNumber}
-                                onClick={() => {
-                                    handleClick(item._id)
-                                }}
-                            />
-                        })
-                    }
-                </ul>
-            </article>
+            <ul className="grid grid-cols-1 gap-1">
+                {
+                    filteredCatways.map(item => {
+                        return <Catway
+                            key={item._id}
+                            catwayNumber={item.catwayNumber}
+                            onClick={() => {
+                                handleClick(item._id)
+                            }}
+                        />
+                    })
+                }
+            </ul>
         </>
     )
 }
 
-function Catway(props) {
-    return (
-        <>
-            <li onClick={props.onClick}
-                className="list-none bg-cyan-700 text-cyan-100 p-5 flex flex-col justify-center hover:cursor-pointer">
-                <p>
-                    <strong>Catway Number: </strong> {props.catwayNumber}
-                </p>
-            </li>
-        </>
-    )
-}
+export default withAuth(CatwaysPage)

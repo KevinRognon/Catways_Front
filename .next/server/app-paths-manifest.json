@@ -1,7 +1,16 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js",
+  "/dashboard/reservations/page": "app/dashboard/reservations/page.js",
+  "/dashboard/catways/create/page": "app/dashboard/catways/create/page.js",
+  "/dashboard/settings/page": "app/dashboard/settings/page.js",
+  "/dashboard/catways/[id]/update/page": "app/dashboard/catways/[id]/update/page.js",
   "/dashboard/users/[id]/page": "app/dashboard/users/[id]/page.js",
-  "/dashboard/users/page": "app/dashboard/users/page.js",
-  "/dashboard/page": "app/dashboard/page.js",
   "/dashboard/catways/[id]/page": "app/dashboard/catways/[id]/page.js",
+  "/dashboard/users/[id]/update/page": "app/dashboard/users/[id]/update/page.js",
+  "/dashboard/users/create/page": "app/dashboard/users/create/page.js",
+  "/dashboard/users/page": "app/dashboard/users/page.js",
+  "/dashboard/profile/page": "app/dashboard/profile/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
   "/dashboard/catways/page": "app/dashboard/catways/page.js"
 }

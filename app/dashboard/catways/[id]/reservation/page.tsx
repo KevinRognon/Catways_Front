@@ -94,7 +94,7 @@ function ReservationCatway() {
                 <input
                     value={checkIn}
                     className="border-cyan-700 border-2 p-2 outline-lime-800"
-                    type="date"
+                    type="datetime-local"
                     name="checkIn"
                     id="checkIn"
                     onChange={(e) => setCheckIn(e.target.value)}
@@ -102,7 +102,7 @@ function ReservationCatway() {
                 <input
                     value={checkOut}
                     className="border-cyan-700 border-2 p-2 outline-lime-800"
-                    type="date"
+                    type="datetime-local"
                     name="checkOut"
                     id="checkOut"
                     onChange={(e) => setCheckOut(e.target.value)}

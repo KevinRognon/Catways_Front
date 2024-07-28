@@ -1,0 +1,9 @@
+{
+  "/page": "app/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/dashboard/reservations/page": "app/dashboard/reservations/page.js",
+  "/dashboard/reservations/[id]/page": "app/dashboard/reservations/[id]/page.js",
+  "/dashboard/catways/page": "app/dashboard/catways/page.js",
+  "/dashboard/catways/[id]/page": "app/dashboard/catways/[id]/page.js",
+  "/dashboard/catways/[id]/reservation/page": "app/dashboard/catways/[id]/reservation/page.js"
+}

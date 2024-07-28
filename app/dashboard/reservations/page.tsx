@@ -3,6 +3,7 @@
 import withAuth from "../../../components/withAuth";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {useRouter} from 'next/navigation';
 
 
 function Reservations() {
@@ -37,6 +38,8 @@ function Reservation(props) {
 
     const checkinDate = new Date(props.checkin);
     const checkoutDate = new Date(props.checkout);
+    const id = props.id_resa;
+    const router = useRouter();
 
     const formattedCheckinDate = checkinDate.toLocaleString('fr-FR', {
         year: 'numeric',
@@ -86,7 +89,7 @@ function Reservation(props) {
                     </div>
                 </div>
                 <div className="flex items-center gap-2">
-                    <button className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-600">Voir</button>
+                    <button onClick={() => { router.push(`/dashboard/reservations/${id}`) }} className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-600">Voir</button>
                 </div>
             </article>
         </>

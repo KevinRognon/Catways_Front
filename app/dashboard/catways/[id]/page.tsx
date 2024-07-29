@@ -4,6 +4,9 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {useParams, useRouter} from "next/navigation";
 import withAuth from "../../../../components/withAuth";
+import ReservationButton from "../../../../components/ui/buttons/ReservationButton";
+import UpdateButton from "../../../../components/ui/buttons/UpdateButton";
+import DeleteButton from "../../../../components/ui/buttons/DeleteButton";
 
 
 function DetailCatway() {
@@ -31,6 +34,13 @@ function DetailCatway() {
         }
     }
 
+    const navigateToReservationForm = () => {
+        router.push(`/dashboard/catways/${id}/reservation`);
+    }
+    const navigateToUpdateForm = () => {
+        router.push(`/dashboard/catways/${id}/update`);
+    }
+
     return (
         <>
             <div  className="p-10">
@@ -49,18 +59,9 @@ function DetailCatway() {
                         <strong>Longueur du catway: </strong> {catway.catwayType}
                     </p>
                     <div className="flex items-center gap-2">
-                        <button onClick={() => {
-                            router.replace(`/dashboard/catways/${id}/reservation`);
-                        }}
-                                className="bg-purple-800 text-white px-4 py-2 rounded hover:bg-purple-600">Réserver
-                        </button>
-                        <button onClick={() => {
-                            router.replace(`/dashboard/catways/${id}/update`)
-                        }} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Modifier
-                        </button>
-                        <button onClick={handleDelete}
-                                className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Supprimer
-                        </button>
+                        <ReservationButton onClick={navigateToReservationForm} text="Réserver" />
+                        <UpdateButton onClick={navigateToUpdateForm} text="Modifier" />
+                        <DeleteButton onClick={handleDelete} text="Supprimer" />
                     </div>
                     {
                         errorMessage && <p className="text-red-600 text-2xl">{errorMessage}</p>

@@ -7,12 +7,14 @@ import withAuth from "../../../../components/withAuth";
 import ReservationButton from "../../../../components/ui/buttons/ReservationButton";
 import DeleteButton from "../../../../components/ui/buttons/DeleteButton";
 import BlueButton from "../../../../components/ui/buttons/BlueButton";
+import ModalConfirmation from "../../../../components/ui/modal/ModalConfirmation";
 
 
 function DetailCatway() {
 
     const [catway, setCatway] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
+    const [isShownModal, setIsShownModal] = useState(false);
     const {id} = useParams();
     const router = useRouter();
 
@@ -24,6 +26,18 @@ function DetailCatway() {
     useEffect(() => {
         fetchdata();
     }, []);
+
+    const setShowModal = (value: boolean) => {
+        setIsShownModal(value);
+    }
+
+    const closeModal = () => {
+        setIsShownModal(false);
+    }
+
+    async function checkConfirm() {
+        setShowModal(true);
+    }
 
     async function handleDelete() {
         const response = await axios.delete(`${process.env.URL}/catways/${id}`);
@@ -61,12 +75,18 @@ function DetailCatway() {
                     <div className="flex items-center gap-2">
                         <ReservationButton onClick={navigateToReservationForm} text="Réserver" />
                         <BlueButton onClick={navigateToUpdateForm} text="Modifier" />
-                        <DeleteButton onClick={handleDelete} text="Supprimer" />
+                        <DeleteButton onClick={checkConfirm} text="Supprimer" />
                     </div>
                     {
                         errorMessage && <p className="text-red-600 text-2xl">{errorMessage}</p>
                     }
+                    
                 </article>
+                {
+                    isShownModal 
+                        && 
+                    <ModalConfirmation option1="Annuler" option2="Supprimer" title="Êtes-vous sûr ?" onAbort={closeModal} onConfirm={handleDelete} />
+                }
             </div>
         </>
     )

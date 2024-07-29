@@ -5,6 +5,7 @@ import withAuth from "../../../../components/withAuth"
 import axios from "axios";
 import { useEffect, useState } from "react";
 import BlueButton from "../../../../components/ui/buttons/BlueButton";
+import ModalConfirmation from "../../../../components/ui/modal/ModalConfirmation";
 
 
 function Detailed_Reservation() {
@@ -16,6 +17,8 @@ function Detailed_Reservation() {
         checkIn: "",
         checkOut: "",
     });
+    const [showModal, setShowModal] = useState(false);
+
     const {id} = useParams();
     const router = useRouter();
 
@@ -43,23 +46,40 @@ function Detailed_Reservation() {
         navigateBack();
     }
 
+    const askConfirmation = () => {
+        setShowModal(true);
+    }
+
+    const abortFunction = () => {
+        setShowModal(false);
+    }
+
+    const confirmFunction = () => {
+        handleDelete();
+    }
+
 
 
     return (
-        <div className="container mx-auto mt-10">
-            <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden">
-                <div className="p-6">
-                    <h2 className="text-2xl font-semibold text-gray-800 mb-4">Détails de la Réservation</h2>
-                    <p className="text-gray-600 mb-2"><strong>Client :</strong> {reservation.clientName}</p>
-                    <p className="text-gray-600 mb-2"><strong>Bateau :</strong> {reservation.boatName}</p>
-                    <p className="text-gray-600 mb-2"><strong>Heure d'arrivée :</strong> {new Date(reservation.checkIn).toLocaleString()}</p>
-                    <p className="text-gray-600 mb-2"><strong>Heure de départ :</strong> {new Date(reservation.checkOut).toLocaleString()}</p>
-                    <div className="mt-4">
-                        <BlueButton onClick={handleDelete} text="Valider départ" />
+        <>
+            <div className="container mx-auto mt-10">
+                <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+                    <div className="p-6">
+                        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Détails de la Réservation</h2>
+                        <p className="text-gray-600 mb-2"><strong>Client :</strong> {reservation.clientName}</p>
+                        <p className="text-gray-600 mb-2"><strong>Bateau :</strong> {reservation.boatName}</p>
+                        <p className="text-gray-600 mb-2"><strong>Heure d'arrivée :</strong> {new Date(reservation.checkIn).toLocaleString()}</p>
+                        <p className="text-gray-600 mb-2"><strong>Heure de départ :</strong> {new Date(reservation.checkOut).toLocaleString()}</p>
+                        <div className="mt-4">
+                            <BlueButton onClick={askConfirmation} text="Valider départ" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            {
+                showModal && <ModalConfirmation title="Valider le départ ?" option1="Annuler" option2="Confirmer" onAbort={abortFunction} onConfirm={confirmFunction} />
+            }
+        </>
     )
 
 }

@@ -86,7 +86,7 @@ function Reservation(props) {
                 </div>
                 <div className="flex items-center gap-2">
 
-                    <BlueButton onClick={ navigateToReservation } text="Voir" />
+                    <BlueButton onClick={ navigateToReservation } text="Détail" />
 
                 </div>
             </article>

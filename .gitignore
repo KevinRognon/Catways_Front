@@ -2,7 +2,7 @@
 node_modules/
 
 # Ignore build output directories
-.next/
+# .next/
 out/
 
 # Ignore log files and other temporary files

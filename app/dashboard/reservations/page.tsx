@@ -4,6 +4,8 @@ import withAuth from "../../../components/withAuth";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {useRouter} from 'next/navigation';
+import ShowButton from "../../../components/ui/buttons/ShowButton";
+import ReservationInfos from "../../../components/ui/textcomponents/ReservationInfos";
 
 
 function Reservations() {
@@ -57,39 +59,29 @@ function Reservation(props) {
         minute: '2-digit'
     });
 
+    const navigateToReservation = () => {
+        router.push(`/dashboard/reservations/${id}`)
+    }
+
     return (
         <>
             <article className="bg-cyan-50 p-6 rounded-lg shadow-md text-cyan-950">
                 <h2 className="text-2xl mb-4 underline">{props.clientName}</h2>
                 <div className="bloc_infos relative">
-                    <div className="client_infos">
-                        <p className="mb-2">
-                            {/* @ts-ignore */}
-                            <strong>Numéro Catway: </strong> {props.catwayNumber}
-                        </p>
-                        <p className="mb-2">
-                            {/* @ts-ignore */}
-                            <strong>Client: </strong> {props.clientName}
-                        </p>
-                        <p className="mb-2">
-                            {/* @ts-ignore */}
-                            <strong>Bateau: </strong> {props.boatName}
-                        </p>
-                    </div>
 
-                    <div className="schedule_infos absolute top-0 right-1 flex flex-col gap-7">
-                        <p className="mb-2">
-                            {/* @ts-ignore */}
-                            <strong>Heure d'arrivée: </strong> {formattedCheckinDate}
-                        </p>
-                        <p className="mb-2">
-                            {/* @ts-ignore */}
-                            <strong>Heure de départ: </strong> {formattedCheckoutDate}
-                        </p>
-                    </div>
+                    <ReservationInfos
+                        catwayNumber={props.catwayNumber}
+                        boatName={props.boatName}
+                        clientName={props.clientName}
+                        formattedCheckinDate={formattedCheckinDate}
+                        formattedCheckoutDate={formattedCheckoutDate}
+                    />
+
                 </div>
                 <div className="flex items-center gap-2">
-                    <button onClick={() => { router.push(`/dashboard/reservations/${id}`) }} className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-600">Voir</button>
+
+                    <ShowButton onClick={ navigateToReservation } text="Voir" />
+
                 </div>
             </article>
         </>

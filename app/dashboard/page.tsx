@@ -23,7 +23,7 @@ function Dashboard() {
             <h1 className="p-10 text-3xl text-cyan-700">Tableau de bord</h1>
 
 
-            <section className="grid grid-cols-1 grid-rows-1 gap-2 md:grid-cols-2 md:gap-5">
+            <section className="grid grid-cols-3 p-16 gap-3 w-full">
                 <Link href="/dashboard/users">
                     <article className="article_dashboard">
                         <h2 className="text-5xl">Liste utilisateurs</h2>

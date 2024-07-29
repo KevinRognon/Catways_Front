@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import withAuth from "../../../../../components/withAuth";
 import { useParams } from "next/navigation";
+import BackButton from "../../../../../components/ui/buttons/BackButton";
 
 function ReservationCatway() {
     const [errorMessage, setErrorMessage] = useState('');
@@ -112,6 +113,7 @@ function ReservationCatway() {
                     type="submit"
                     value="Créer"
                 />
+                <BackButton />
             </form>
         </div>
     )

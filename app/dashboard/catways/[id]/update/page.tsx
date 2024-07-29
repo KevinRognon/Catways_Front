@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {useRouter, useParams} from "next/navigation";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
+import BackButton from "../../../../../components/ui/buttons/BackButton";
 
 
 function UpdateCatway () {
@@ -58,7 +59,9 @@ function UpdateCatway () {
         setCatwayState('');
     }
 
-
+    const navigateBack = () => {
+        router.back();
+    }
 
 
     return (
@@ -74,10 +77,7 @@ function UpdateCatway () {
                     {/* @ts-ignore */}
                     <input value={catwayState} className="border-cyan-700 border-2 p-2 outline-lime-800" type="text" name="name" id="name" placeholder={catway.catwayState} onChange={(e) => {setCatwayState(e.target.value)}} />
                     <input className="p-2 border-2 border-cyan-700 bg-cyan-700 text-cyan-100 hover:cursor-pointer hover:text-lime-50" type="submit" value="Modifier"/>
-                    <button onClick={() => {
-                        router.replace(`/dashboard/catways/${id}`);
-                    }} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Retour
-                    </button>
+                    <BackButton />
                 </form>
             </div>
         </>

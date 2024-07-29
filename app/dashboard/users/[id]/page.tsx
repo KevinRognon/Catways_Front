@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import {useRouter, useParams} from "next/navigation";
 import axios from "axios";
 import Loader from "../../../../components/Loader";
+import ModalConfirmation from "../../../../components/ui/modal/ModalConfirmation";
 
 
 const Detail_User = () => {
@@ -35,28 +36,49 @@ const Detail_User = () => {
     )
 }
 
-function User(props) {
+function User({id, name, email}) {
 
     const router = useRouter();
+    const [showModal, setShowModal] = useState(false);
+
     async function handleDelete() {
-        await axios.delete(`${process.env.URL}/users/${props.id}`);
+        await axios.delete(`${process.env.URL}/users/${id}`);
         router.replace(`/dashboard/users`);
     }
 
+    const askConfirmation = () => {
+        setShowModal(true);
+    }
+
+    const abortFunction = () => {
+        setShowModal(false);
+    }
+
+    const confirmFunction = () => {
+        handleDelete();
+    }
+
     return (
-        <article className="w-2/5 bg-cyan-50 p-6 rounded-lg shadow-md text-cyan-950">
-            <h2 className="text-2xl font-semibold text-cyan-700 mb-4">User Detail</h2>
-            <p className="mb-2">
-                <strong>Name: </strong> {props.name}
-            </p>
-            <p className="mb-4">
-                <strong>Email: </strong> {props.email}
-            </p>
-            <div className="flex items-center gap-2">
-                <button onClick={() => { router.replace(`/dashboard/users/${props.id}/update`) }} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Modifier</button>
-                <button onClick={handleDelete} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Supprimer</button>
-            </div>
-        </article>
+        <>
+            <article className="w-2/5 bg-cyan-50 p-6 rounded-lg shadow-md text-cyan-950">
+                <h2 className="text-2xl font-semibold text-cyan-700 mb-4">User Detail</h2>
+                <p className="mb-2">
+                    <strong>Name: </strong> {name}
+                </p>
+                <p className="mb-4">
+                    <strong>Email: </strong> {email}
+                </p>
+                <div className="flex items-center gap-2">
+                    <button onClick={() => { router.replace(`/dashboard/users/${id}/update`) }} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Modifier</button>
+                    <button onClick={askConfirmation} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Supprimer</button>
+                </div>
+            </article>
+            {
+                showModal 
+                    &&
+                <ModalConfirmation title={"Êtes-vous sûr de supprimer " + name + " ?"} option1="Annuler" option2="Supprimer" onAbort={abortFunction} onConfirm={confirmFunction} />
+            }
+        </>
     )
 }
 

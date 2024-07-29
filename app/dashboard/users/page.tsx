@@ -45,7 +45,7 @@ function Users() {
     }
 
     const navigateToCreationForm = () => {
-        router.push('/dashboard/catways/create');
+        router.push('/dashboard/users/create');
     }
 
     return (

@@ -28,17 +28,12 @@ function ReservationCatway() {
     }, [catway]);
 
     const getCatwayInformation = async () => {
-        try {
-            const response = await axios.get(`${process.env.URL}/catways/${id}`);
-            setCatway(response.data.catway);
-        } catch (error) {
-            setErrorMessage('Erreur lors de la récupération des informations du catway.');
-        }
+        const response = await axios.get(`${process.env.URL}/catways/${id}`);
+        setCatway(response.data.catway);
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
             const response = await axios.post(`${process.env.URL}/reservations/create`, {
                 catwayNumber: catwayNumber,
                 clientName: clientName,
@@ -47,25 +42,26 @@ function ReservationCatway() {
                 checkOut: checkOut
             });
 
-            if (response.status === 200) {
-                setSuccessMessage('Réservation créée avec succès.');
+            if (response.status === 201) {
+                setSuccessMessage(response.data.message);
                 setErrorMessage('');
                 setClientName('');
                 setBoatName('');
                 setCheckIn('');
                 setCheckOut('');
-            } else {
-                setErrorMessage('Erreur lors de la création de la réservation.');
-                setSuccessMessage('');
+
+            } else if (response.status === 400) {
+                setErrorMessage(response.data.message);
             }
-        } catch (error) {
-            setErrorMessage('Erreur lors de la création de la réservation.');
-            setSuccessMessage('');
-        }
+
+            setTimeout(() => {
+                setSuccessMessage('');
+                setErrorMessage('');
+            }, 2000)
     }
 
     if (!catway) {
-        return <div>Chargement...</div>; // Display a loading message while fetching data
+        return <div>Chargement...</div>;
     }
 
     return (

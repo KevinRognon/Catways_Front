@@ -6,6 +6,7 @@ import axios from "axios";
 import {useRouter} from 'next/navigation';
 import BlueButton from "../../../components/ui/buttons/BlueButton";
 import ReservationInfos from "../../../components/ui/textcomponents/ReservationInfos";
+import NoContent from "../../../components/ui/textcomponents/NoContent";
 
 
 function Reservations() {
@@ -26,11 +27,17 @@ function Reservations() {
 
     return (
         <>
-            <ul className="grid grid-cols-2 gap-5 mt-5 pb-5 w-4/5 m-auto">
-                {reservations.map(reservation => {
-                    return <Reservation key={reservation._id} id_resa={reservation._id} clientName={reservation.clientName} boatName={reservation.boatName} catwayNumber={reservation.catwayNumber} checkin={reservation.checkIn} checkout={reservation.checkOut}/>
-                })}
-            </ul>
+        {
+            reservations.length != 0
+            ?
+                <ul className="grid grid-cols-2 gap-5 mt-5 pb-5 w-4/5 m-auto">
+                    {
+                        reservations.map(reservation => { return <Reservation key={reservation._id} id_resa={reservation._id} clientName={reservation.clientName} boatName={reservation.boatName} catwayNumber={reservation.catwayNumber} checkin={reservation.checkIn} checkout={reservation.checkOut}/>})
+                    }
+                </ul>
+            : 
+                <NoContent title="Aucune réservation" text="Enregistrez une réservation pour continuer" />
+        }
         </>
     )
 
@@ -68,7 +75,6 @@ function Reservation(props) {
             <article className="bg-cyan-50 p-6 rounded-lg shadow-md text-cyan-950">
                 <h2 className="text-2xl mb-4 underline">{props.clientName}</h2>
                 <div className="bloc_infos relative">
-
                     <ReservationInfos
                         catwayNumber={props.catwayNumber}
                         boatName={props.boatName}

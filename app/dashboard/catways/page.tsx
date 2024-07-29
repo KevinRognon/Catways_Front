@@ -5,16 +5,15 @@ import {useRouter} from "next/navigation";
 import Link from "next/link";
 import withAuth from "../../../components/withAuth";
 import Loader from "../../../components/Loader";
+import GreenButton from "../../../components/ui/buttons/GreenButton";
 
 
 function CatwaysPage() {
+    const router = useRouter();
 
     return (
         <>
             <article className="flex flex-col p-8 h-96">
-                <Link className="underline mb-5" href="/dashboard/catways/create">
-                    Create
-                </Link>
                 <Suspense fallback={<Loader />}>
                     <CatwaysList/>
                 </Suspense>
@@ -65,14 +64,22 @@ function CatwaysList() {
         }
     }
 
+    const navigateToCreationForm = () => {
+        router.push('/dashboard/catways/create');
+    }
+
     useEffect(() => {
         fetchdata();
     }, []);
 
     return (
         <>
-            <input className="w-1/3 p-2 text-black mb-2" type="text" value={searchText} name="search"
-                   placeholder="Saisissez un catway" onChange={(e) => handleChange(e)}/>
+            <div className="flex flex-col mb-3">
+                <input className="w-1/3 p-2 text-black" type="text" value={searchText} name="search"
+                    placeholder="Saisissez un catway" onChange={(e) => handleChange(e)}/>
+
+                <GreenButton onClick={navigateToCreationForm} text="Créer" />
+            </div>
 
             <ul className="grid grid-cols-1 gap-1">
                 {

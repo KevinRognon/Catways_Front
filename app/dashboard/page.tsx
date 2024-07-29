@@ -39,11 +39,6 @@ function Dashboard() {
                         <h2 className="text-5xl">Réservations</h2>
                     </article>
                 </Link>
-                <Link href="/dashboard/settings">
-                    <article className="article_dashboard">
-                        <h2 className="text-5xl">Paramètres</h2>
-                    </article>
-                </Link>
             </section>
         </>
     )

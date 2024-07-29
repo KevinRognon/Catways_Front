@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import withAuth from "../../../../components/withAuth"
 import axios from "axios";
 import { useEffect, useState } from "react";
-import DeleteButton from "../../../../components/ui/buttons/DeleteButton";
+import BlueButton from "../../../../components/ui/buttons/BlueButton";
 
 
 function Detailed_Reservation() {
@@ -34,7 +34,7 @@ function Detailed_Reservation() {
 
 
     const handleDelete = () => {
-        
+        console.log('Départ enregistré');
     }
 
 
@@ -49,7 +49,7 @@ function Detailed_Reservation() {
                     <p className="text-gray-600 mb-2"><strong>Heure d'arrivée :</strong> {new Date(reservation.checkIn).toLocaleString()}</p>
                     <p className="text-gray-600 mb-2"><strong>Heure de départ :</strong> {new Date(reservation.checkOut).toLocaleString()}</p>
                     <div className="mt-4">
-                        <DeleteButton onClick={handleDelete} text="Supprimer" />
+                        <BlueButton onClick={handleDelete} text="Valider départ" />
                     </div>
                 </div>
             </div>

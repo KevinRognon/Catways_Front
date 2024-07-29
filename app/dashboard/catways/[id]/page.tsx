@@ -5,8 +5,8 @@ import axios from "axios";
 import {useParams, useRouter} from "next/navigation";
 import withAuth from "../../../../components/withAuth";
 import ReservationButton from "../../../../components/ui/buttons/ReservationButton";
-import UpdateButton from "../../../../components/ui/buttons/UpdateButton";
 import DeleteButton from "../../../../components/ui/buttons/DeleteButton";
+import BlueButton from "../../../../components/ui/buttons/BlueButton";
 
 
 function DetailCatway() {
@@ -60,7 +60,7 @@ function DetailCatway() {
                     </p>
                     <div className="flex items-center gap-2">
                         <ReservationButton onClick={navigateToReservationForm} text="Réserver" />
-                        <UpdateButton onClick={navigateToUpdateForm} text="Modifier" />
+                        <BlueButton onClick={navigateToUpdateForm} text="Modifier" />
                         <DeleteButton onClick={handleDelete} text="Supprimer" />
                     </div>
                     {

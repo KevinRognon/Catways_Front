@@ -4,7 +4,7 @@ import withAuth from "../../../components/withAuth";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {useRouter} from 'next/navigation';
-import ShowButton from "../../../components/ui/buttons/ShowButton";
+import BlueButton from "../../../components/ui/buttons/BlueButton";
 import ReservationInfos from "../../../components/ui/textcomponents/ReservationInfos";
 
 
@@ -80,7 +80,7 @@ function Reservation(props) {
                 </div>
                 <div className="flex items-center gap-2">
 
-                    <ShowButton onClick={ navigateToReservation } text="Voir" />
+                    <BlueButton onClick={ navigateToReservation } text="Voir" />
 
                 </div>
             </article>

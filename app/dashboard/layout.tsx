@@ -5,6 +5,8 @@ import Link from "next/link";
 import {useRouter} from "next/navigation";
 import {useUser} from "../../context/userContext";
 import {Suspense} from "react";
+import BlueButton from '../../components/ui/buttons/BlueButton';
+import DeleteButton from '../../components/ui/buttons/DeleteButton';
 
 export default function Layout({
                                        children,
@@ -21,6 +23,11 @@ export default function Layout({
         setUser(null);
         router.replace('/');
     };
+
+    const navigateToAccount = () => {
+        router.push('/dashboard/account')
+    }
+
     return (
         <>
             <nav className="flex items-center justify-between gap-2 bg-cyan-700 text-cyan-100 h-12 pl-5 pr-5">
@@ -39,7 +46,10 @@ export default function Layout({
                         </div>
 
                 }
-                <p className="hover:cursor-pointer" onClick={handleLogout}>Déconnexion</p>
+                <div className="flex gap-2 font-semibold">
+                    <BlueButton onClick={navigateToAccount} text="Compte" />
+                    <DeleteButton onClick={handleLogout} text="Déconnexion" />
+                </div>
             </nav>
             {children}
         </>

@@ -6,6 +6,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import BlueButton from "../../../../components/ui/buttons/BlueButton";
 import ModalConfirmation from "../../../../components/ui/modal/ModalConfirmation";
+import DeleteButton from "../../../../components/ui/buttons/DeleteButton";
+
 
 
 function Detailed_Reservation() {
@@ -16,6 +18,7 @@ function Detailed_Reservation() {
         boatName: "",
         checkIn: "",
         checkOut: "",
+        createdAt: ""
     });
     const [showModal, setShowModal] = useState(false);
 
@@ -31,6 +34,11 @@ function Detailed_Reservation() {
             console.error("Error fetching reservation data:", error);
         }
     };
+
+    const formattedCreationDate = () => {
+        const dateCreation = reservation.createdAt;
+
+    }
 
     useEffect(() => {
         getReservation();
@@ -64,14 +72,16 @@ function Detailed_Reservation() {
         <>
             <div className="container mx-auto mt-10">
                 <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden">
-                    <div className="p-6">
-                        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Détails de la Réservation</h2>
+                    <div className="p-6 relative">
+                        {/* <p className="text-gray-600 absolute top-1 right-1"></p> */}
+                        <h2 className="text-xl font-semibold text-gray-800 mb-4 mt-3">Réservation crée le: {new Date(reservation.createdAt).toLocaleString()}</h2>
                         <p className="text-gray-600 mb-2"><strong>Client :</strong> {reservation.clientName}</p>
                         <p className="text-gray-600 mb-2"><strong>Bateau :</strong> {reservation.boatName}</p>
                         <p className="text-gray-600 mb-2"><strong>Heure d'arrivée :</strong> {new Date(reservation.checkIn).toLocaleString()}</p>
                         <p className="text-gray-600 mb-2"><strong>Heure de départ :</strong> {new Date(reservation.checkOut).toLocaleString()}</p>
-                        <div className="mt-4">
-                            <BlueButton onClick={askConfirmation} text="Valider départ" />
+                        <div className="flex gap-2 mt-4">
+                            <DeleteButton onClick={askConfirmation} text="Valider départ" />
+                            <BlueButton onClick={navigateBack} text="Retour" />
                         </div>
                     </div>
                 </div>

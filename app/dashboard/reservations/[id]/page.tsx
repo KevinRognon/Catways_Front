@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import withAuth from "../../../../components/withAuth"
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -17,6 +17,7 @@ function Detailed_Reservation() {
         checkOut: "",
     });
     const {id} = useParams();
+    const router = useRouter();
 
     const getReservation = async () => {
         try {
@@ -32,9 +33,14 @@ function Detailed_Reservation() {
         getReservation();
     }, [id]);
 
+    const navigateBack = () => {
+        router.back();
+    }
 
-    const handleDelete = () => {
-        console.log('Départ enregistré');
+
+    const handleDelete = async () => {
+        await axios.delete(`${process.env.URL}/reservations/${id}`)
+        navigateBack();
     }
 
 

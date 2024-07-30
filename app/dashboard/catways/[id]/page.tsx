@@ -8,6 +8,7 @@ import ReservationButton from "../../../../components/ui/buttons/ReservationButt
 import DeleteButton from "../../../../components/ui/buttons/DeleteButton";
 import BlueButton from "../../../../components/ui/buttons/BlueButton";
 import ModalConfirmation from "../../../../components/ui/modal/ModalConfirmation";
+import BackButton from "../../../../components/ui/buttons/BackButton";
 
 
 function DetailCatway() {
@@ -58,7 +59,7 @@ function DetailCatway() {
     return (
         <>
             <div  className="p-10">
-                <article className="w-2/5 bg-cyan-50 p-6 rounded-lg shadow-md text-cyan-950">
+                <article className="w-2/3 bg-cyan-50 p-6 rounded-lg shadow-md text-cyan-950">
                     <h2 className="text-2xl font-semibold text-cyan-700 mb-4">Catway Detail</h2>
                     <p className="mb-2">
                         {/* @ts-ignore */}
@@ -72,10 +73,15 @@ function DetailCatway() {
                         {/* @ts-ignore */}
                         <strong>Longueur du catway: </strong> {catway.catwayType}
                     </p>
-                    <div className="flex items-center gap-2">
-                        <ReservationButton onClick={navigateToReservationForm} text="Réserver" />
-                        <BlueButton onClick={navigateToUpdateForm} text="Modifier" />
-                        <DeleteButton onClick={checkConfirm} text="Supprimer" />
+                    <div className="flex justify-between gap-2 mt-5">
+                        <div>
+                            <BackButton />
+                        </div>
+                        <div className="flex gap-1">
+                            <ReservationButton onClick={navigateToReservationForm} text="Réserver" />
+                            <BlueButton onClick={navigateToUpdateForm} text="Modifier" />
+                            <DeleteButton onClick={checkConfirm} text="Supprimer" />
+                        </div>
                     </div>
                     {
                         errorMessage && <p className="text-red-600 text-2xl">{errorMessage}</p>

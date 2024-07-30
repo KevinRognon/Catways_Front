@@ -9,7 +9,7 @@ export default function RootLayout({
     return (
         <html lang="fr">
             <body>
-                <main className="bg-cyan-950 min-h-dvh text-cyan-100">
+                <main className="bg-cyan-950 h-dvh text-cyan-100">
                     <UserProvider>
                         {children}
                     </UserProvider>

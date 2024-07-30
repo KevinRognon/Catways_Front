@@ -6,6 +6,9 @@ import {useRouter, useParams} from "next/navigation";
 import axios from "axios";
 import Loader from "../../../../components/Loader";
 import ModalConfirmation from "../../../../components/ui/modal/ModalConfirmation";
+import BlueButton from "../../../../components/ui/buttons/BlueButton";
+import DeleteButton from "../../../../components/ui/buttons/DeleteButton";
+import BackButton from "../../../../components/ui/buttons/BackButton";
 
 
 const Detail_User = () => {
@@ -58,21 +61,28 @@ function User({id, name, email}) {
         handleDelete();
     }
 
+    const navigateToUpdate = () => {
+        router.push(`/dashboard/users/${id}/update`);
+    }
+
     return (
         <>
-            <article className="w-2/5 bg-cyan-50 p-6 rounded-lg shadow-md text-cyan-950">
-                <h2 className="text-2xl font-semibold text-cyan-700 mb-4">User Detail</h2>
-                <p className="mb-2">
-                    <strong>Name: </strong> {name}
-                </p>
-                <p className="mb-4">
-                    <strong>Email: </strong> {email}
-                </p>
-                <div className="flex items-center gap-2">
-                    <button onClick={() => { router.replace(`/dashboard/users/${id}/update`) }} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Modifier</button>
-                    <button onClick={askConfirmation} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Supprimer</button>
-                </div>
-            </article>
+            <div className="grid place-items-center">
+                <article className="w-2/3 bg-cyan-50 p-6 rounded-lg shadow-md text-cyan-950">
+                    <h2 className="text-2xl font-semibold text-cyan-700 mb-4">User Detail</h2>
+                    <p className="mb-2">
+                        <strong>Name: </strong> {name}
+                    </p>
+                    <p className="mb-4">
+                        <strong>Email: </strong> {email}
+                    </p>
+                    <div className="flex items-center gap-2">
+                        <BackButton />
+                        <BlueButton onClick={navigateToUpdate} text="Modifier" />
+                        <DeleteButton onClick={askConfirmation} text="Supprimer" />
+                    </div>
+                </article>
+            </div>
             {
                 showModal 
                     &&

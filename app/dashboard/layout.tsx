@@ -88,7 +88,10 @@ export default function Layout({
                     onConfirm={handleLogout}
                 />
             )}
-            {children}
+            
+            <main className="pt-8 pb-8">
+                {children}
+            </main>
         </>
     );
 }

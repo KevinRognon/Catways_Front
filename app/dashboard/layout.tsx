@@ -42,6 +42,10 @@ export default function Layout({
         router.push('/dashboard/');
     };
 
+    const navigateToApi = () => {
+        router.push('/dashboard/api');
+    };
+
     const checkRoutePath = () => {
         let newpathname = pathname.split('/');
         let newpathname2 = '';
@@ -71,6 +75,7 @@ export default function Layout({
                 </div>
                 <div className="flex gap-2">
                     <BlueButton onClick={navigateToDashboard} text="Dashboard" />
+                    <BlueButton onClick={navigateToApi} text="Api" />
                     <DeleteButton onClick={askConfirmation} text="Déconnexion" />
                 </div>
             </nav>
@@ -83,7 +88,10 @@ export default function Layout({
                     onConfirm={handleLogout}
                 />
             )}
-            {children}
+            
+            <main className="pt-8 pb-8">
+                {children}
+            </main>
         </>
     );
 }

@@ -29,6 +29,7 @@ export default function LoginForm() {
 
             if(response.status === 200) {
                 const user = response.data.user;
+                console.log(user);
                 let token = response.headers['authorization'];
                 setUser(user);
                 Cookies.set('user', JSON.stringify(user), {

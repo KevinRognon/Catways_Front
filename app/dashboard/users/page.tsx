@@ -5,9 +5,11 @@ import {useEffect, useState} from "react";
 import {useRouter} from 'next/navigation';
 import axios from "axios";
 import GreenButton from "../../../components/ui/buttons/GreenButton";
+import { useUser } from "../../../context/userContext";
 
 function Users() {
     const router = useRouter();
+    const {user, setUser} = useUser();
 
 
     const [users, setUsers] = useState([]);
@@ -26,7 +28,6 @@ function Users() {
     }
 
     useEffect(() => {
-
         fetchdata();
 
     }, []);
@@ -61,12 +62,15 @@ function Users() {
 
                 <ul className="grid grid-cols-1 gap-1">
                     {
-                        filteredUsers.map(user => {
+                        filteredUsers.map(item_user => {
+                            if(item_user.name === user.name) {
+                                return;
+                            }
                            return <User
-                                key={user._id}
-                                onClick={() => {handleClick(user._id)}}
-                                name={user.name}
-                                email={user.email}
+                                key={item_user._id}
+                                onClick={() => {handleClick(item_user._id)}}
+                                name={item_user.name}
+                                email={item_user.email}
                             />
 
                         })

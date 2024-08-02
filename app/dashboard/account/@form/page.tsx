@@ -43,6 +43,12 @@ function Account() {
             if (e.response && e.response.status === 400) {
                 ErrorHandling(e.response.data.message);
             }
+            else if (e.response && e.response.status === 404) {
+                ErrorHandling(e.response.data.message);
+            }
+            else if (e.response && e.response.status === 501) {
+                ErrorHandling(e.response.data.message);
+            }
         }
     }
 

@@ -20,10 +20,10 @@ export default function Layout({
     const [route, setRoute] = useState('');
 
     const handleLogout = () => {
+        router.replace('/');
         Cookies.remove("token");
         Cookies.remove("user");
         setUser(null);
-        router.replace('/');
     };
 
     const askConfirmation = () => {

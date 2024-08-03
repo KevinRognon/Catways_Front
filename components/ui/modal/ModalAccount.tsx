@@ -39,14 +39,14 @@ export default function ModalAccount({title, onAbort, title_patch, type, id}) {
 
   return (
     <div onClick={onAbort} className='absolute top-0 left-0 z-10 w-dvw h-dvh bg-black bg-opacity-70 flex justify-center items-center'>
-        <div onClick={stopPropagation} className='flex flex-col items-center z-20 text-black bg-neutral-300 w-fit h-fit p-5 rounded-md'>
+        <div onClick={stopPropagation} className='flex flex-col items-center z-20 text-black bg-cyan-100 w-fit h-fit p-5 rounded-md'>
 
             <p className='text-lg font-bold'>Modification: {title}</p>
 
 
             <div className='flex gap-2 mt-4'>
                 <form onSubmit={handleSubmit} className='flex flex-col gap-2'>
-                    <input onChange={(e) => {setField(e.target.value)}} className='p-1 rounded-3xl pl-5' placeholder={title} type={type} />
+                    <input onChange={(e) => {setField(e.target.value)}} className='p-1 rounded-3xl shadow-lg pl-5' placeholder={title} type={type} />
                     <BlueButton onClick={handleSubmit} text="Modifier" />
                 </form>
             </div>

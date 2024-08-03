@@ -1,26 +1,22 @@
 "use client";
 
 import Cookies from 'js-cookie';
-import {usePathname, useRouter} from "next/navigation";
-import {useUser} from "../../context/userContext";
-import {useState, useEffect} from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useUser } from "../../context/userContext";
+import { useState, useEffect } from "react";
 import BlueButton from '../../components/ui/buttons/BlueButton';
 import DeleteButton from '../../components/ui/buttons/DeleteButton';
 import ModalConfirmation from '../../components/ui/modal/ModalConfirmation';
 
-export default function Layout({
-    children,
-}: {
-    children: React.ReactNode
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
     const router = useRouter();
     const pathname = usePathname();
     const { user, setUser } = useUser();
     const [showModal, setShowModal] = useState(false);
     const [route, setRoute] = useState('');
 
-    const handleLogout = () => {
-        router.replace('/');
+    const handleLogout = async () => {
+        await router.replace('/');
         Cookies.remove("token");
         Cookies.remove("user");
         setUser(null);

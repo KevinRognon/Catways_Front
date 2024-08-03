@@ -4,7 +4,7 @@ export default function SearchBar({searchText, handleChange, text}) {
 
     return (
         <>
-            <div className="flex items-center w-1/4 relative">
+            <div className="flex items-center w-52 relative">
                 <input className="w-full p-2 rounded-3xl pl-5 text-black" type="text" value={searchText} name="search"
                     placeholder={text} onChange={(e) => handleChange(e)}/>
                 <svg className="absolute right-3" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">

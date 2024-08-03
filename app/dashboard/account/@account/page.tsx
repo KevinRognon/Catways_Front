@@ -4,6 +4,7 @@ import {useRouter} from "next/navigation";
 import AccountCard from "../../../../components/ui/cards/AccountCard";
 import withAuth from "../../../../components/withAuth";
 import { useUser } from "../../../../context/userContext";
+import LateralColor from "../../../../components/ui/lateralColor/LateralColor";
 
 function Account() {
     
@@ -34,8 +35,11 @@ function Account() {
 
                 <div className="flex flex-col gap-5 col-span-2">
                     <div>
-                        <h2 className="text-3xl font-bold font-">Informations personnelles</h2>
-                        <p className="text-gray-700">Modifiez vos informations personnelles</p>
+                        <h2 className="pl-2 relative text-3xl font-bold font-">
+                            Informations personnelles
+                            <LateralColor color="bg-blue-700" />
+                            <p className="text-gray-700 text-sm">Modifiez vos informations personnelles</p>
+                        </h2>
                     </div>
                     
                     <ul className="grid grid-cols-2 gap-5 place-items-center">

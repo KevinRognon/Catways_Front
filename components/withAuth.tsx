@@ -12,8 +12,9 @@ export default function withAuth(WrappedComponent) {
 
         useEffect(() => {
             const token = Cookies.get('token');
+            const user = Cookies.get('user');
 
-            if (!token) {
+            if (!token || !user) {
                 router.replace('/');
             } else {
                 axios.defaults.headers.common['Authorization'] = `${token}`;

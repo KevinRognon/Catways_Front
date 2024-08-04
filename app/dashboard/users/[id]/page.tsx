@@ -98,7 +98,7 @@ function User({id, name, email}) {
             {
                 showModal 
                     &&
-                <ModalConfirmation title={"Êtes-vous sûr de supprimer " + name + " ?"} option1="Annuler" option2="Supprimer" onAbort={abortFunction} onConfirm={confirmFunction} />
+                <ModalConfirmation text="" title={"Êtes-vous sûr de supprimer " + name + " ?"} option1="Annuler" option2="Supprimer" onAbort={abortFunction} onConfirm={confirmFunction} />
             }
         </>
     )

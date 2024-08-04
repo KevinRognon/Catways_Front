@@ -91,7 +91,7 @@ function DetailCatway() {
                 {
                     isShownModal 
                         && 
-                    <ModalConfirmation option1="Annuler" option2="Supprimer" title="Êtes-vous sûr ?" onAbort={closeModal} onConfirm={handleDelete} />
+                    <ModalConfirmation text="Entrainera la suppression des réservations liées" option1="Annuler" option2="Supprimer" title="Êtes-vous sûr ?" onAbort={closeModal} onConfirm={handleDelete} />
                 }
             </div>
         </>

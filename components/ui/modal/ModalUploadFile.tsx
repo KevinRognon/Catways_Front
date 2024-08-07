@@ -1,15 +1,35 @@
+import { useState } from "react";
 import BlueButton from "../buttons/BlueButton";
 import DeleteButton from "../buttons/DeleteButton";
 
 
-export default function ModalUploadFile({title, text, pos_x, pos_y}) {
+export default function ModalUploadFile({title, text, onClick}) {
 
+    const [file, setFile] = useState({});
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        console.log(file);
+
+    }
+
+    const stopPropagation = (e) => {
+        e.stopPropagation();
+    }
 
     return (
         <>
-            <div id="modalFile" className='absolute flex flex-col items-center z-20 text-black bg-neutral-300 w-fit h-fit p-5 rounded-md'>
-                <p className='text-lg font-bold'>{title}</p>
-                <p>{text}</p>
+
+            <div onClick={onClick} className='absolute top-0 left-0 z-10 w-dvw h-dvh bg-black bg-opacity-70 flex justify-center items-center'>
+                <div onClick={stopPropagation} id="modalFile" className='flex items-center justify-center text-black bg-neutral-300 w-fit h-fit p-2 rounded-md'>
+                    <form onSubmit={handleSubmit} >
+                        <div className="flex flex-col ">
+                            <input onChange={(e) => {setFile(e.target.value)}} type="file" name="file" />
+                            <BlueButton onClick={onsubmit} text="Uploader" />
+                        </div>
+                    </form>
+                </div>
             </div>
         </>
     )

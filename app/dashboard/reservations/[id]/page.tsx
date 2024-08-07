@@ -87,7 +87,7 @@ function Detailed_Reservation() {
                 </div>
             </div>
             {
-                showModal && <ModalConfirmation title="Valider le départ ?" option1="Annuler" option2="Confirmer" onAbort={abortFunction} onConfirm={confirmFunction} />
+                showModal && <ModalConfirmation text="" title="Valider le départ ?" option1="Annuler" option2="Confirmer" onAbort={abortFunction} onConfirm={confirmFunction} />
             }
         </>
     )

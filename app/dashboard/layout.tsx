@@ -77,6 +77,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </nav>
             {showModal && (
                 <ModalConfirmation
+                    text=""
                     title="Êtes-vous sûr ?"
                     option1="Annuler"
                     option2="Déconnexion"

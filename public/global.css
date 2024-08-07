@@ -4,8 +4,8 @@
 @tailwind utilities;
 
 * {
-    font-family: "Calibri Light";
-    /* font-weight: 500; */
+    font-family: "Raleway";
+    font-weight: 300;
 }
 
 main {

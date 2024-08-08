@@ -1,6 +1,5 @@
 import { useState } from "react";
 import BlueButton from "../buttons/BlueButton";
-import DeleteButton from "../buttons/DeleteButton";
 
 
 export default function ModalUploadFile({title, text, onClick}) {

@@ -1,15 +1,32 @@
 import { useState } from "react";
 import BlueButton from "../buttons/BlueButton";
+import axios from "axios";
+import { useUser } from "../../../context/userContext";
 
 
 export default function ModalUploadFile({title, text, onClick}) {
 
-    const [file, setFile] = useState({});
+    const {user} = useUser();
+    const [file, setFile] = useState(null);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log(file);
+        const formData = new FormData();
+        formData.append('name', file);
+        formData.append('userId', user.id);
+
+        
+        try {
+            const response = await axios.post(`${process.env.URL}/files`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
 
     }
 
@@ -24,7 +41,7 @@ export default function ModalUploadFile({title, text, onClick}) {
                 <div onClick={stopPropagation} id="modalFile" className='flex items-center justify-center text-black bg-neutral-300 w-fit h-fit p-2 rounded-md'>
                     <form onSubmit={handleSubmit} >
                         <div className="flex flex-col ">
-                            <input onChange={(e) => {setFile(e.target.value)}} type="file" name="file" />
+                            <input onChange={(e) => {setFile(e.target.files[0])}} type="file" name="file" />
                             <BlueButton onClick={onsubmit} text="Uploader" />
                         </div>
                     </form>

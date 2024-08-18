@@ -18,7 +18,7 @@ function Account() {
     const [avatar, setAvatar] = useState(null);
 
     useEffect(() => {
-        if (user && user.avatar != "") {
+        if (user) {
             setAvatar(user.avatar);
         }
     }, [user])
@@ -70,6 +70,7 @@ function Account() {
                             :
                                 <div className="relative rounded-full hover:cursor-pointer">
                                     <img className="w-40 h-40 rounded-full" src={avatar} alt={`avatar_${user.name}`} />
+                                    <svg onClick={switchModal} className="absolute bottom-0 right-0 hover:cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21" fill="#4CAF50"/><g fill="#fff"><path d="M21 14h6v20h-6z"/><path d="M14 21h20v6H14z"/></g></svg>
                                 </div>
                         }
                         <div>

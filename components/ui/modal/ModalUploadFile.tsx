@@ -14,7 +14,7 @@ export default function ModalUploadFile({title, text, onClick, onSuccessUpload})
 
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('userId', user.id);
+        formData.append('userId', user._id);
 
         
         try {
@@ -24,11 +24,11 @@ export default function ModalUploadFile({title, text, onClick, onSuccessUpload})
                 },
             });
             if(response.status === 201) {
-                onSuccessUpload();
-                const update_avatar_url = await axios.patch(`${process.env.URL}/users/${user._id}/update/`, {
+                const update_avatar_url = await axios.patch(`${process.env.URL}/users/${user.id}/update/`, {
                     avatar: `${process.env.URL}/${response.data.path}`
                 })
-                // window.location.reload();
+                onSuccessUpload();
+                window.location.reload();
             }
         } catch (error) {
             console.error(error);

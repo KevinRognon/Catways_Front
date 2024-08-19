@@ -7,8 +7,8 @@ import { useUser } from "../../../../context/userContext";
 import LateralColor from "../../../../components/ui/lateralColor/LateralColor";
 import ModalUploadFile from "../../../../components/ui/modal/ModalUploadFile";
 import { useEffect, useState } from "react";
-import Cookies from 'js-cookie';
 import axios from "axios";
+import {resetCookies} from '../../../../constants/functions';
 
 function Account() {
     
@@ -40,16 +40,28 @@ function Account() {
     const succesUpload = async () => {
         switchModal();
         
-        const response = await axios.get(`${process.env.URL}/users/${user.id}`);
-        Cookies.remove('user');
-        Cookies.set('user', JSON.stringify(response.data), {
-            expires: 0.5
-        });
-        window.location.reload();
+        const response = await axios.get(`${process.env.URL}/users/${user._id}`);
+        resetCookies('user', response.data, 0.5);
         
-        setAvatar(user.avatar);        
+        setAvatar(user.avatar);
 
 
+    }
+
+    const deleteAvatar = async () => {
+        console.log("Suppression de l'avatar");
+        try {
+            const response = await axios.patch(`${process.env.URL}/users/${user._id}/update`, {
+                avatar: ""
+            });
+            console.log(response.data);
+            
+            setAvatar(null);
+            resetCookies('user', response.data.user, 0.5);
+
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     return (
@@ -70,7 +82,7 @@ function Account() {
                             :
                                 <div className="relative rounded-full hover:cursor-pointer">
                                     <img className="w-40 h-40 rounded-full" src={avatar} alt={`avatar_${user.name}`} />
-                                    <svg onClick={switchModal} className="absolute bottom-0 right-0 hover:cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21" fill="#4CAF50"/><g fill="#fff"><path d="M21 14h6v20h-6z"/><path d="M14 21h20v6H14z"/></g></svg>
+                                    <svg onClick={deleteAvatar} xmlns="http://www.w3.org/2000/svg" className="absolute bottom-0 right-0 hover:cursor-pointer"  width="30" height="30" viewBox="0 0 16 16"><path fill="red" fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14m4-7a.75.75 0 0 0-.75-.75h-6.5a.75.75 0 0 0 0 1.5h6.5A.75.75 0 0 0 12 8" clipRule="evenodd"/></svg>
                                 </div>
                         }
                         <div>

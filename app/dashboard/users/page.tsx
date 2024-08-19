@@ -30,7 +30,9 @@ function Users() {
     }
 
     useEffect(() => {
-        fetchdata();
+        if (user) {
+            fetchdata();
+        }
 
     }, []);
 

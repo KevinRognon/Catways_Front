@@ -21,7 +21,7 @@ export default function ModalAccount({title, onAbort, title_patch, type, id}) {
             const response = await axios.patch(`${process.env.URL}/users/${id}/update`, {
                 [title_request]: field
             })
-            console.log(response.data);
+
 
             Cookies.remove('user');
             await Cookies.set('user', JSON.stringify(response.data.user), {

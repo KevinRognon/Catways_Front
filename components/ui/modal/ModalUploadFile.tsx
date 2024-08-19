@@ -35,11 +35,9 @@ export default function ModalUploadFile({title, text, onClick, onSuccessUpload})
                 // Remplace les backslash par des slash
                 avatarPath = avatarPath.replace(/\\/g, '/');
 
-                const update_avatar_url = await axios.patch(`${process.env.URL}/users/${user.id}/update`, {
+                const update_avatar_url = await axios.patch(`${process.env.URL}/users/${user._id}/update`, {
                     avatar: `${process.env.URL}${avatarPath}` // URL correctement formée
                 });
-                
-                console.log(avatarPath);
                 
                 onSuccessUpload();
             }

@@ -40,12 +40,12 @@ function Account() {
     const succesUpload = async () => {
         switchModal();
         
-        const response = await axios.get(`${process.env.URL}/users/${user._id}`);
+        const response = await axios.get(`${process.env.URL}/users/${user.id}`);
         Cookies.remove('user');
         Cookies.set('user', JSON.stringify(response.data), {
             expires: 0.5
         });
-        console.log(user.avatar);
+        window.location.reload();
         
         setAvatar(user.avatar);        
 

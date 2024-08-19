@@ -23,12 +23,25 @@ export default function ModalUploadFile({title, text, onClick, onSuccessUpload})
                     'Content-Type': 'multipart/form-data',
                 },
             });
+
             if(response.status === 201) {
-                const update_avatar_url = await axios.patch(`${process.env.URL}/users/${user.id}/update/`, {
-                    avatar: `${process.env.URL}/${response.data.path}`
-                })
+                let avatarPath = response.data.path;
+
+                // Si le chemin ne commence pas par un slash, il est ajouté
+                if (!avatarPath.startsWith("/")) {
+                    avatarPath = `/${avatarPath}`;
+                }
+
+                // Remplace les backslash par des slash
+                avatarPath = avatarPath.replace(/\\/g, '/');
+
+                const update_avatar_url = await axios.patch(`${process.env.URL}/users/${user.id}/update`, {
+                    avatar: `${process.env.URL}${avatarPath}` // URL correctement formée
+                });
+                
+                console.log(avatarPath);
+                
                 onSuccessUpload();
-                window.location.reload();
             }
         } catch (error) {
             console.error(error);

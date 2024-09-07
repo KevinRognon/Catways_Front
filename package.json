@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "dev": "dotenv -e .env/.env.dev -- next dev",
-    "build": "dotenv -e .env/.env -- next build",
-    "start": "dotenv -e .env/.env -- next start",
+    "dev": "env-cmd -f .env/.env.dev -- next dev",
+    "build": "env-cmd -f .env/.env -- next build",
+    "start": "env-cmd -f .env/.env -- next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -11,8 +11,7 @@
     "jsonwebtoken": "^9.0.2",
     "next": "^14.2.5",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "dotenv-cli": "^7.4.2"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@types/node": "20.14.12",
@@ -20,6 +19,7 @@
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.39",
     "tailwindcss": "^3.4.6",
-    "typescript": "5.5.3"
+    "typescript": "5.5.3",
+    "env-cmd": "^10.1.0"
   }
 }
